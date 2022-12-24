@@ -1,2 +1,22 @@
-*.sqlite3
+###############################
+# Python staff
+###############################
+
 __pycache__/
+
+# SQlite database
+.sqlite3
+
+# Environment variables
+.env
+
+
+###############################
+# Editors
+###############################
+
+# Jetbrains
+.idea
+
+# VScode
+.vscode/
