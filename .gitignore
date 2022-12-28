@@ -5,7 +5,7 @@
 __pycache__/
 
 # SQlite database
-.sqlite3
+.db.sqlite3
 
 # Environment variables
 .env
@@ -16,7 +16,7 @@ __pycache__/
 ###############################
 
 # Jetbrains
-.idea
+.idea/
 
 # VScode
 .vscode/
