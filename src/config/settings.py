@@ -13,6 +13,9 @@ ALLOWED_HOSTS = getenv("DJANGO_ALLOWED_HOSTS", default="").split(",")
 ALPHA_VANTAGE_API_KEY = getenv("ALPHA_VANTAGE_API_KEY")
 ALPHA_VANTAGE_BASE_URL = getenv("ALPHA_VANTAGE_BASE_URL", default="https://www.alphavantage.co")
 
+# Set custom user model
+AUTH_USER_MODEL = "users.User"
+
 # Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -22,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "exchange_rates",
+    "users",
 ]
 
 MIDDLEWARE = [

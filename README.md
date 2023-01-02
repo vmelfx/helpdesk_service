@@ -15,3 +15,13 @@ pipenv shell
 - flake8 6.0.0
 - black 22.12.0
 - isort 5.11.2
+
+## Application description
+```bash
+▾ users
+    ├─ apps.py # Django apps configuration
+    ├─ urls.py # pre-controller
+    ├─ views.py # Endpoints / post-controller
+    ├─ models.py # Database tables mapper
+    ├─ admin.py 
+```
