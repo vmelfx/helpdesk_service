@@ -1,8 +1,9 @@
+from django.contrib import admin
+from django.urls import include, path
 import json
 from dataclasses import asdict, dataclass
 
 from django.http import HttpResponse
-from django.urls import path
 
 
 @dataclass
@@ -19,5 +20,7 @@ def signup(variable):
 
 
 urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("exchange-rates/", include("exchange_rates.urls")),
     path("signup/", signup),
 ]
