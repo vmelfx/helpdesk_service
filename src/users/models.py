@@ -1,9 +1,11 @@
-from django.contrib.auth.models import AbstractBaseUser, UserManager
+from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.validators import ASCIIUsernameValidator
 from django.contrib.postgres.fields import CICharField, CIEmailField
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from users.managers import UserManager
+
 
 
 class User(AbstractBaseUser):
@@ -35,8 +37,12 @@ class User(AbstractBaseUser):
         default=False,
         help_text=_("Designates whether the user can log into this admin site."),
     )
-    last_login = models.DateTimeField(_("last login"), help_text=_("Show the last login date and time"))
+    last_login = models.DateTimeField(
+        _("last login"), help_text=_("Show the last login date and time"), default=timezone.now
+    )
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
+
+    role = models.CharField(_("role"), max_length=7, help_text=_("Designates user role in the system"), choices=[])
 
     objects = UserManager()
 

@@ -3,6 +3,15 @@
 
 ## Adjust the application
 
+
+### Create `.env` file based on `.env.default`
+```bash
+# Unix
+cp .env.default .env
+
+# Windows
+copy .env.default .env
+```
 ### Install deps
 ```bash
 pipenv sync --dev

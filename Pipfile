@@ -10,6 +10,7 @@ flake8 = "~=6.0.0"
 isort = "~=5.11.2"
 requests = "*"
 pydantic = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
