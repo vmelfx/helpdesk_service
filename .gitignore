@@ -16,7 +16,8 @@ __pycache__/
 ###############################
 
 # Jetbrains
-*.idea/
+/.idea/*
+!/.idea/runConfigurations
 
 # VScode
 .vscode/
