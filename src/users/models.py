@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from users.managers import UserManager
 
 
+
 class User(AbstractBaseUser):
     username_validator = ASCIIUsernameValidator
 

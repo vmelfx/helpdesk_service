@@ -7,6 +7,7 @@ import django.utils.timezone
 import users.managers
 
 
+
 class Migration(migrations.Migration):
 
     initial = True

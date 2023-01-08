@@ -1,7 +1,9 @@
 {
     "_meta": {
         "hash": {
+
             "sha256": "5b8aa6e64f0b03a4e2a27ef5280c8dfcc23d7253bbf0aa02dbef0104f0e2514a"
+
         },
         "pipfile-spec": 6,
         "requires": {
@@ -263,6 +265,7 @@
             ],
             "index": "pypi",
             "version": "==1.10.4"
+
         },
         "pyflakes": {
             "hashes": [
