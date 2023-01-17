@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
                     "is_staff",
                     models.BooleanField(
                         default=False,
-                        help_text="Designates whether the user can log into this admin site.",
+                        help_text="Designates whether the user can log into this admin.py site.",
                         verbose_name="staff status",
                     ),
                 ),
@@ -67,7 +67,7 @@ class Migration(migrations.Migration):
                 (
                     "role",
                     models.CharField(
-                        choices=[("admin", "Admin"), ("manager", "Manager"), ("user", "User")],
+                        choices=[("admin.py", "Admin"), ("manager", "Manager"), ("user", "User")],
                         help_text="Designates user role in the system",
                         max_length=7,
                         verbose_name="role",

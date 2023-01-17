@@ -5,7 +5,7 @@ __all__ = ["Role"]
 
 
 class Role(Enum):
-    ADMIN = "admin"
+    ADMIN = "admin.py"
     MANAGER = "manager"
     USER = "user"
 
