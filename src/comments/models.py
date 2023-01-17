@@ -9,3 +9,4 @@ class Comment(TimeStampMixin):
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
 
     body = models.TextField()
+    

@@ -10,3 +10,4 @@ class Ticket(TimeStampMixin):
     manager = models.ForeignKey(
         settings.AUTH_USER_MODEL, null=True, default=None, on_delete=models.DO_NOTHING, related_name="manager_tickets"
     )
+    
