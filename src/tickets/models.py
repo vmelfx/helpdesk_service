@@ -1,13 +1,12 @@
-from django.contrib.auth import get_user_model
+from django.conf import settings
 from django.db import models
+from shared.django import TimeStampMixin
 
-User = get_user_model()
 
-
-class Ticket(models.Model):
+class Ticket(TimeStampMixin):
     header = models.CharField(max_length=255)
     body = models.TextField()
-    customer = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    manager = models.ForeignKey(User, null=True, default=None, on_delete=models.DO_NOTHING)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, related_name="customer_tickets")
+    manager = models.ForeignKey(
+        settings.AUTH_USER_MODEL, null=True, default=None, on_delete=models.DO_NOTHING, related_name="manager_tickets"
+    )
