@@ -1,12 +1,12 @@
-from django.contrib.auth import get_user_model
+from django.conf import settings
 from django.db import models
+from shared.django import TimeStampMixin
 from tickets.models import Ticket
 
-User = get_user_model()
 
-
-class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+class Comment(TimeStampMixin):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, related_name="comments")
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+
+    body = models.TextField()
+    
