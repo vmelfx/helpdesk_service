@@ -1,17 +1,12 @@
-# from django.db.models.query import QuerySet
-from django.http import JsonResponse
 from django.urls import path
-from django.views.generic import ListView
+from rest_framework.generics import ListAPIView
 from tickets.models import Ticket
+from tickets.serializers import TicketSerializer
 
 
-def tickets_get(request):
-    # tickets: QuerySet = Ticket.objects.all()
-    return JsonResponse({})
-
-
-class TicketsGet(ListView):
-    model = Ticket
+class TicketsGet(ListAPIView):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
 
 
 urlpatterns = [
