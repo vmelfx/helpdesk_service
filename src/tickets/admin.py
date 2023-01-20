@@ -1,6 +1,6 @@
 from django.contrib import admin
-from tickets.models import Ticket
 from shared.django import TimeStampReadonlyAdmin
+from tickets.models import Ticket
 
 
 @admin.register(Ticket)
