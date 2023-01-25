@@ -20,6 +20,8 @@ def get_ticket(request, id_: int) -> JsonResponse:
     serializer = TicketSerializer(ticket)
     return JsonResponse(serializer.data)
 
+class TicketRetrieve
+
 
 @api_view(["POST"])
 def create_ticket(request) -> JsonResponse:
