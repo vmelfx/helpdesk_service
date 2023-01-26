@@ -4,7 +4,7 @@ from functools import lru_cache
 __all__ = ["Role"]
 
 
-class Role(Enum):
+class Role(str, Enum):
     ADMIN = "admin"
     MANAGER = "manager"
     USER = "user"
