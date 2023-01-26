@@ -21,12 +21,6 @@ def get_ticket(request, id_: int) -> JsonResponse:
     return JsonResponse(serializer.data)
 
 
-# class TicketRetrieveAPI(RetrieveAPIView):
-#     queryset = Ticket.objects.all()
-#     serializer_class = TicketSerializer
-#     lookup_field = "id_"
-
-
 class TicketCreateAPI(CreateAPIView):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
