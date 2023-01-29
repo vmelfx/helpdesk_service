@@ -32,5 +32,5 @@ pipenv shell
     ├─ urls.py # pre-controller
     ├─ api.py # Endpoints / post-controller
     ├─ models.py # Database tables mapper
-    ├─ admin.py 
+    ├─ admin.py.py 
 ```
