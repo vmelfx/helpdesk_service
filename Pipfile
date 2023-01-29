@@ -12,6 +12,7 @@ requests = "*"
 pydantic = "*"
 psycopg2-binary = "*"
 djangorestframework = "~=3.14.0"
+djangorestframework-simplejwt = "==5.2.2"
 
 [dev-packages]
 
