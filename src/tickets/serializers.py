@@ -11,7 +11,7 @@ class TicketCreateSerializer(serializers.ModelSerializer):
 class TicketLightSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
-        exclude = ["body"]
+        exclude = ["body", "manager"]
 
 
 class TicketSerializer(serializers.ModelSerializer):
