@@ -1,9 +1,6 @@
-from django.urls import path
-from tickets.api import ticket_create, ticket_retrieve, ticket_update, tickets_list
+from rest_framework.routers import DefaultRouter
+from tickets.api import TicketApiSet
 
-urlpatterns = [
-    path("", ticket_create),
-    path("", tickets_list),
-    path("", ticket_update),
-    path("<int:id_>/", ticket_retrieve),
-]
+router = DefaultRouter()
+router.register("", TicketApiSet, basename="")
+urlpatterns = router.urls
