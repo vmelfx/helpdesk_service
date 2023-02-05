@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
-from tickets.api import TicketApiSet
+from tickets.api import TicketAPISet
 
 router = DefaultRouter()
-router.register("", TicketApiSet, basename="")
+router.register("", TicketAPISet, basename="")
 urlpatterns = router.urls

@@ -7,7 +7,7 @@ from tickets.models import Ticket
 from tickets.serializers import TicketLightSerializer, TicketSerializer
 
 
-class TicketApiSet(ViewSet):
+class TicketAPISet(ViewSet):
     def list(self, request):
         queryset = Ticket.objects.all()
         serializer = TicketLightSerializer(queryset, many=True)
@@ -49,4 +49,5 @@ class TicketApiSet(ViewSet):
 
     def destroy(self, request, pk: int):
         Ticket.objects.get(id=pk).delete()
+
         return JsonResponse({}, status=status.HTTP_204_NO_CONTENT)
