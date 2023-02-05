@@ -1,46 +1,48 @@
 from django.http import JsonResponse
 from rest_framework import status
-from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 from shared.serializers import ResponseMultiSerializer, ResponseSerializer
-from tickets.models import Ticket
-from tickets.serializers import TicketLightSerializer, TicketSerializer
+from users.models import User
+from users.serializers import (
+    UserListSerializer,
+    UserRegistrationSerializer,
+    UserRetrieveSerializer,
+)
 
 
-class TicketAPISet(ViewSet):
+class UsersAPISet(ViewSet):
     def list(self, request):
-        queryset = Ticket.objects.all()
-        serializer = TicketLightSerializer(queryset, many=True)
+        queryset = User.objects.all()
+        serializer = UserListSerializer(queryset, many=True)
+
         response = ResponseMultiSerializer({"results": serializer.data})
 
-        return Response(response.data)
+        return JsonResponse(response.data)
 
     def retrieve(self, request, pk: int):
-        instance = Ticket.objects.get(id=pk)
-        serializer = TicketSerializer(instance)
+        queryset = User.objects.get(id=pk)
+        serializer = UserRetrieveSerializer(queryset)
+
         response = ResponseSerializer({"result": serializer.data})
 
         return JsonResponse(response.data)
 
     def create(self, request):
-        context: dict = {
-            "request": self.request,
-        }
-        serializer = TicketSerializer(data=request.data, context=context)
+        serializer = UserRegistrationSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+
         response = ResponseSerializer({"result": serializer.data})
 
         return JsonResponse(response.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk: int):
-        instance = Ticket.objects.get(id=pk)
-
         context: dict = {
             "request": self.request,
         }
-        serializer = TicketSerializer(instance, data=request.data, context=context)
-        serializer.is_valid()
+        instance = User.objects.get(id=pk)
+        serializer = UserRegistrationSerializer(instance, data=request.data, context=context)
+        serializer.is_valid(raise_exception=True)
         serializer.save()
 
         response = ResponseSerializer({"result": serializer.data})
@@ -48,6 +50,6 @@ class TicketAPISet(ViewSet):
         return JsonResponse(response.data)
 
     def destroy(self, request, pk: int):
-        Ticket.objects.get(id=pk).delete()
+        User.objects.get(id=pk).delete()
 
         return JsonResponse({}, status=status.HTTP_204_NO_CONTENT)
