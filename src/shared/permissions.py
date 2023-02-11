@@ -1,5 +1,5 @@
 from tickets.models import Ticket
-from users.schemas import Role
+from users.models import Role, User
 
 
 class PermissionsMixin:
@@ -7,11 +7,11 @@ class PermissionsMixin:
         """
         Get all own tickets for managers and all tickets for admins
         """
-        role: Role = self.request.user.role
+        user: User = self.request.user
 
-        if role == Role.ADMIN:
+        if user.role == Role.ADMIN:
             return Ticket.objects.all()
-        elif role == Role.MANAGER:
-            return Ticket.objects.filter(manager=self.request.user)
+        elif user.role == Role.MANAGER:
+            return Ticket.objects.filter(manager=user)
 
-        return Ticket.objects.filter(customer=self.request.user)
+        return Ticket.objects.filter(customer=user)

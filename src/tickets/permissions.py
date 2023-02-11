@@ -12,9 +12,7 @@ class RoleIsUser(BasePermission):
         return request.user.role == Role.USER
 
     def has_object_permission(self, request, view, obj):
-        if obj.customer == request.user:
-            return True
-        return False
+        return obj.customer == request.user
 
 
 class RoleIsManager(BasePermission):
@@ -22,9 +20,7 @@ class RoleIsManager(BasePermission):
         return request.user.role == Role.MANAGER
 
     def has_object_permission(self, request, view, obj):
-        if obj.manager == request.user:
-            return True
-        return False
+        return obj.manager == request.user
 
 
 class IsOwner(BasePermission):
