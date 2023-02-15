@@ -9,7 +9,7 @@ from tickets.permissions import IsOwner, RoleIsAdmin, RoleIsManager, RoleIsUser
 from tickets.serializers import TicketLightSerializer, TicketSerializer
 
 
-class TicketAPISet(ViewSet, GenericViewSet, PermissionsMixin):
+class TicketAPISet(PermissionsMixin, ViewSet, GenericViewSet):
     queryset = Ticket.objects.all()
 
     def get_permissions(self):

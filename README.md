@@ -34,3 +34,44 @@ pipenv shell
     ├─ models.py # Database tables mapper
     ├─ admin.py
 ```
+
+# Database
+```mermaid
+erDiagram
+    Users {
+        int id
+        string first_name
+        string last_name
+        string email
+        string password
+        bool is_stuff
+        bool is_active
+        string role
+        datetime created_at
+        datetime updated_at
+    }
+    
+    Tickets {
+        int id
+        int customer_id
+        int manager_id
+        string header
+        string body
+        datetime created_at
+        datetime updated_at
+    }
+    
+    Comments {
+        int id
+        int prev_comment_id
+        int user_id
+        int ticket_id
+        string body
+        datetime created_at
+        datetime updated_at
+    }
+    
+    Users ||--o{ Tickets : ""
+    Tickets ||--o{ Comments : ""
+    Comments ||--o{ Comments : ""
+```
