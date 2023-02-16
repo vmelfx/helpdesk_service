@@ -27,11 +27,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         default=False,
         help_text=_("Designates whether the user can log into this admin site."),
     )
-    last_login = models.DateTimeField(
-        _("last login"),
-        help_text=_("Show the last login date and time"),
-        default=timezone.now,
-    )
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
 
     role = models.CharField(
