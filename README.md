@@ -25,6 +25,37 @@ pipenv shell
 - black 22.12.0
 - isort 5.11.2
 
+## Run using Docker Compose
+```bash
+docker-compose up -d
+```
+
+### Useful commands
+```bash
+# Build images
+docker-compose build
+
+# Stop containers
+docker-compose down
+
+# Check containers status
+docker-compose ps
+
+## Logs
+
+# Get all logs
+docker-compose logs
+
+# Get specific logs
+docker-compose logs app
+
+# Get limited logs
+docker-compose logs --tail 10 app
+
+# Get flowed logs
+docker-compose logs -f app
+```
+
 ## Application description
 ```bash
 ▾ users

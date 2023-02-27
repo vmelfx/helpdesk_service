@@ -5,16 +5,19 @@ name = "pypi"
 
 [packages]
 Django = "~= 4.1.4"
+requests = "*"
+pydantic = "*"
+djangorestframework = "~=3.14.0"
+djangorestframework-simplejwt = "==5.2.2"
+psycopg2-binary = "*"
+
+[dev-packages]
 black = "~=22.12.0"
 flake8 = "~=6.0.0"
 isort = "~=5.11.2"
-requests = "*"
-pydantic = "*"
-psycopg2-binary = "*"
-djangorestframework = "~=3.14.0"
-djangorestframework-simplejwt = "==5.2.2"
-
-[dev-packages]
+mypy = "~=0.991"
+django-stubs = "1.14.0"
+djangorestframework-stubs = "~=1.8.0"
 
 [requires]
 python_version = "3.10"

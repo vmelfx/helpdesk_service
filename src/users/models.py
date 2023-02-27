@@ -1,6 +1,5 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.contrib.auth.validators import ASCIIUsernameValidator
-from django.contrib.postgres.fields import CIEmailField
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -14,7 +13,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True)
     first_name = models.CharField(_("first name"), max_length=150, blank=True)
     last_name = models.CharField(_("last name"), max_length=150, blank=True)
-    email = CIEmailField(
+    email = models.EmailField(
         _("email address"), unique=True, error_messages={"unique": _("A user with that email address already exists")}
     )
     is_active = models.BooleanField(
@@ -26,9 +25,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         _("staff status"),
         default=False,
         help_text=_("Designates whether the user can log into this admin site."),
-    )
-    last_login = models.DateTimeField(
-        _("last login"), help_text=_("Show the last login date and time"), default=timezone.now
     )
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
 

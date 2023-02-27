@@ -45,7 +45,7 @@ class CommentsAPISet(PermissionsMixin, ViewSet, GenericViewSet):
         return Response(response.data)
 
     def retrieve(self, request, ticket_id, comment_id):
-        ticket = get_object_or_404(Ticket.objects.filter(customer=self.request.user), id=ticket_id)
+        ticket = get_object_or_404(Ticket.objects.filter(customer=request.user.id), id=ticket_id)
         comment = get_object_or_404(ticket.comments, id=comment_id)
         serializer = CommentSerializer(comment)
         response = ResponseSerializer({"result": serializer.data})
@@ -64,7 +64,7 @@ class CommentsAPISet(PermissionsMixin, ViewSet, GenericViewSet):
         return JsonResponse(response.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, ticket_id, comment_id):
-        ticket = get_object_or_404(Ticket.objects.filter(customer=self.request.user), id=ticket_id)
+        ticket = get_object_or_404(Ticket.objects.filter(customer=request.user.id), id=ticket_id)
         comment = get_object_or_404(ticket.comments, id=comment_id)
 
         context: dict = {
