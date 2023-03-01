@@ -14,7 +14,7 @@ class TicketAPISet(PermissionsMixin, ViewSet, GenericViewSet):
 
     def get_permissions(self):
         if self.action == "list":
-            permission_classes = [RoleIsAdmin | RoleIsManager | RoleIsUser]
+            permission_classes: list = [RoleIsAdmin | RoleIsManager | RoleIsUser]
         elif self.action == "create":
             permission_classes = [RoleIsUser]
         elif self.action == "retrieve":

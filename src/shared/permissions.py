@@ -7,7 +7,7 @@ class PermissionsMixin:
         """
         Get all own tickets for managers and all tickets for admins
         """
-        user: User = self.request.user
+        user: User = self.request.user  # type: ignore
 
         if user.role == Role.ADMIN:
             return Ticket.objects.all()
