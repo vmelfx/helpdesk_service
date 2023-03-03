@@ -25,6 +25,21 @@ pipenv shell
 - black 22.12.0
 - isort 5.11.2
 
+## Collect static files
+```bash
+# You 
+python ./src/manage.py collectstatic 
+```
+## WSGI configuration
+```bash
+# Please note, that on windows system you currently unable to use gunicorn due to bug: https://github.com/lux-org/lux/issues/483
+# Run using django WSGI
+python ./src/manage.py runserver
+
+# Run using gunicorn WSGI
+gunicorn src.config.wsgi:application --bind localhost:8000
+
+```
 ## Run using Docker Compose
 ```bash
 docker-compose up -d
@@ -63,7 +78,7 @@ docker-compose logs -f app
     ├─ urls.py # pre-controller
     ├─ api.py # Endpoints / post-controller
     ├─ models.py # Database tables mapper
-    ├─ admin.py
+    ├─ admin.py # Admin panel configuration
 ```
 
 # Database
