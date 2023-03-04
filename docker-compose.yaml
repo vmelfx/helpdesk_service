@@ -1,6 +1,16 @@
 version: "3"
 
 services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "1300:80"
+    volumes:
+      - static_volume:/home/app/staticfiles
+    depends_on:
+      - app
+    restart: "on-failure"
+
   postgres:
     image: "postgres:15"
     container_name: "support_db"
@@ -16,16 +26,21 @@ services:
     build:
       context: .
       dockerfile: "Dockerfile"
-    command: "gunicorn src.config.wsgi:application --bind 0.0.0.0:8000"
+    command: sh -c "python ./src/manage.py makemigrations &&
+                    python ./src/manage.py migrate &&
+                    python ./src/manage.py collectstatic --noinput&&
+                    gunicorn src.config.wsgi:application --bind 0.0.0.0:${APP_PORT}"
     image: "support_app"
     container_name: "support_app"
     env_file: ".env"
     depends_on:
       - "postgres"
     volumes:
-      - ".:/app/"
+      - ".:/app:rw"
+      - "static_volume:/staticfiles"
     ports:
       - "8000:8000"
 
 volumes:
   pg_data: {}
+  static_volume: {}

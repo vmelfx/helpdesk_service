@@ -12,5 +12,5 @@ urlpatterns = [
     path("auth/", include("authentication.urls")),
     path("static/<path:path>/", serve, {"document_root": settings.STATIC_ROOT}),
 ]
-
-urlpatterns += staticfiles_urlpatterns()
+# if settings.DEBUG:
+#     urlpatterns += staticfiles_urlpatterns()

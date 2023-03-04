@@ -1,3 +1,4 @@
+import os
 from distutils.util import strtobool
 from os import getenv
 from pathlib import Path
@@ -105,5 +106,10 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-STATIC_ROOT = ROOT_DIR / "staticfiles"
-STATIC_URL = "static/"
+# STATIC_ROOT = ROOT_DIR / "staticfiles"
+# STATIC_URL = "/static/"
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(ROOT_DIR, 'staticfiles')
+
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:1300", "http://127.0.0.1:1300"]
