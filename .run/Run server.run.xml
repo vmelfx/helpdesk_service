@@ -7,11 +7,11 @@
       <env name="DB_ENGINE" value="django.db.backends.postgresql" />
       <env name="DB_HOST" value="localhost" />
       <env name="DB_NAME" value="support" />
-      <env name="DB_PASSWORD" value="vmel" />
+      <env name="DB_PASSWORD" value="postgres" />
       <env name="DB_PORT" value="5432" />
-      <env name="DB_USER" value="vmel" />
+      <env name="DB_USER" value="postgres" />
       <env name="DJANGO_ALLOWED_HOSTS" value="127.0.0.1,localhost" />
-      <env name="DJANGO_DEBUG" value=" 1" />
+      <env name="DJANGO_DEBUG" value="False" />
       <env name="DJANGO_SECRET_KEY" value=" ^6-fb*!@o_5_z$ntlm)u$^(30hrck*5h25+p=o#v7jhl5bxhdc" />
       <env name="PYTHONUNBUFFERED" value="1" />
     </envs>

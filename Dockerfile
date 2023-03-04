@@ -1,8 +1,10 @@
 FROM python:3.10.7-slim
 
+ARG PIPENV_EXTRA_ARGS
+
 ENV PYTHONBUFFERD=1
 
-WORKDIR /app/
+WORKDIR ${APP_WORKDIR}
 
 
 RUN apt-get update \
@@ -14,6 +16,6 @@ RUN pip install --upgrade pip pipenv setuptools
 
 COPY Pipfile Pipfile.lock ./
 
-RUN pipenv sync --system --dev
+RUN pipenv sync --system ${PIPENV_EXTRA_ARGS}
 
 COPY ./ ./
