@@ -1,5 +1,14 @@
 # Support service application
 
+## Application description
+```bash
+▾ users
+    ├─ apps.py # Django apps configuration
+    ├─ urls.py # pre-controller
+    ├─ api.py # Endpoints / post-controller
+    ├─ models.py # Database tables mapper
+    ├─ admin.py # Admin panel configuration
+```
 
 ## Adjust the application
 
@@ -20,17 +29,13 @@ pipenv sync --dev
 pipenv shell
 ```
 
-## Code quality tools
-- flake8 6.0.0
-- black 22.12.0
-- isort 5.11.2
-
-## Collect static files
+### Collect static files
 ```bash
 # You 
 python ./src/manage.py collectstatic 
 ```
-## WSGI configuration
+
+### WSGI configuration
 ```bash
 # Please note, that on windows system you currently unable to use gunicorn due to bug: https://github.com/lux-org/lux/issues/483
 # Run using django WSGI
@@ -40,11 +45,6 @@ python ./src/manage.py runserver
 gunicorn src.config.wsgi:application --bind localhost:8000
 
 ```
-## Run using Docker Compose
-```bash
-docker-compose up -d
-```
-
 ### Useful commands
 ```bash
 # Build images
@@ -71,15 +71,24 @@ docker-compose logs --tail 10 app
 docker-compose logs -f app
 ```
 
-## Application description
+## Deploy application(AWS, GogleCloud, etc.)
+After cloning repo to your hosting you need to fill .env file, run docker, create superuser, and you are ready to go:
 ```bash
-▾ users
-    ├─ apps.py # Django apps configuration
-    ├─ urls.py # pre-controller
-    ├─ api.py # Endpoints / post-controller
-    ├─ models.py # Database tables mapper
-    ├─ admin.py # Admin panel configuration
+cp .env.default .env
+# fill the .env file
+docker-compose build
+docker-compose up -d
+docker exec -it <your application  name(by default: support_app)> bash
+python ./src/manage.py createsuperuser
 ```
+## Code quality tools
+- flake8 6.0.0
+- black 22.12.0
+- isort 5.11.2
+
+
+
+
 
 # Database
 ```mermaid
