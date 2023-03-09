@@ -44,10 +44,10 @@ workflows:
             - check-code-quality
           filters:
             branches:
-              only: documentation_integration
+              only: main
       - deploy:
           requires:
             - hold-deploy
           filters:
             branches:
-              only: documentation_integration
+              only: main
