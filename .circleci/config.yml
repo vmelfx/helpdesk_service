@@ -1,0 +1,50 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.5.0
+
+jobs:
+  check-code-quality:
+    docker:
+      - image: cimg/python:3.10.4
+    steps:
+      - checkout
+      - python/install-packages:
+          args: --dev
+          pkg-manager: pipenv
+      - run:
+          name: Run linter
+          command: pipenv run flake8 .
+      - run:
+          name: Check formatting
+          command: pipenv run black --check . && pipenv run isort --check-only .
+      - run:
+          name: Check static types
+          command: pipenv run mypy .
+
+  deploy:
+    docker:
+      - image: arvindr226/alpine-ssh
+    steps:
+      - checkout
+      - run: ssh -oStrictHostKeyChecking=no -v $USER@$IP "~/family_budget_bot/scripts/deploy.sh"
+
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - check-code-quality
+      - hold-deploy:
+          type: approval
+          requires:
+            - check-code-quality
+          filters:
+            branches:
+              only: documentation_integration
+      - deploy:
+          requires:
+            - hold-deploy
+          filters:
+            branches:
+              only: documentation_integration
