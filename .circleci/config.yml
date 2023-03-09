@@ -27,7 +27,10 @@ jobs:
       - image: arvindr226/alpine-ssh
     steps:
       - checkout
-      - run: ssh -oStrictHostKeyChecking=no -v $USER@$IP "~/family_budget_bot/scripts/deploy.sh"
+      - run:
+          name: Deploy to EC2 instance
+          command:
+            ssh -o StrictHostKeyChecking=no  circle_ci@52.47.100.5
 
 
 workflows:
