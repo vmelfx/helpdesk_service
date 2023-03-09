@@ -28,6 +28,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
+    "drf_yasg",
 ]
 
 LOCAL_APPS = [
@@ -112,4 +113,4 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(ROOT_DIR, "staticfiles")
 
 
-CSRF_TRUSTED_ORIGINS = getenv("CSRF_TRUSTED_ORIGINS", default=[])  # type: ignore
+CSRF_TRUSTED_ORIGINS = getenv("CSRF_TRUSTED_ORIGINS", default="").split(",")  # type: ignore
