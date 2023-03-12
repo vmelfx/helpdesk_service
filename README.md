@@ -9,6 +9,9 @@
     ├─ models.py # Database tables mapper
     ├─ admin.py # Admin panel configuration
 ```
+### Application architecture diagram
+![Untitled-2023-03-12-1630-PhotoRoom.png-PhotoRoom (1).png](..%2F..%2FDownloads%2FUntitled-2023-03-12-1630-PhotoRoom.png-PhotoRoom%20%281%29.png)
+
 
 ## Adjust the application
 
