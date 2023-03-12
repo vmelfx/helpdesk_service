@@ -86,6 +86,8 @@ python ./src/manage.py createsuperuser
 - black 22.12.0
 - isort 5.11.2
 
+## CI/CD
+
 
 
 
