@@ -10,7 +10,7 @@
     ├─ admin.py # Admin panel configuration
 ```
 ### Application architecture diagram
-![Untitled-2023-03-12-1630-PhotoRoom.png-PhotoRoom (1).png](..%2F..%2FDownloads%2FUntitled-2023-03-12-1630-PhotoRoom.png-PhotoRoom%20%281%29.png)
+![Untitled-2023-03-12-1630-PhotoRoom png-PhotoRoom (1)](https://user-images.githubusercontent.com/89578357/224575404-7e93f890-7d54-4fe9-a91b-6de869acdb62.png)
 
 
 ## Adjust the application
