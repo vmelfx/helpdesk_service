@@ -30,7 +30,7 @@ jobs:
       - run:
           name: Deploy to EC2 instance
           command:
-            ssh -o StrictHostKeyChecking=no  circle_ci@52.47.100.5 "/home/ubuntu/helpdesk_service/scripts/deploy.sh"
+            ssh -o StrictHostKeyChecking=no  circleci@13.39.38.183 "~/helpdesk_service/scripts/deploy.sh"
 
 
 
