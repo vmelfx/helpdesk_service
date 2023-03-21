@@ -113,4 +113,5 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(ROOT_DIR, "staticfiles")
 
 
-CSRF_TRUSTED_ORIGINS = getenv("CSRF_TRUSTED_ORIGINS", default="").split(",")
+# CSRF_TRUSTED_ORIGINS = getenv("CSRF_TRUSTED_ORIGINS", default="").split(",")
+CSRF_TRUSTED_ORIGINS = ["http://localhost:1300"]

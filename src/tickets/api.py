@@ -7,6 +7,7 @@ from shared.serializers import ResponseMultiSerializer, ResponseSerializer
 from tickets.models import Ticket
 from tickets.permissions import IsOwner, RoleIsAdmin, RoleIsManager, RoleIsUser
 from tickets.serializers import TicketLightSerializer, TicketSerializer
+from tickets.tasks import hello_task
 
 
 class TicketAPISet(PermissionsMixin, ViewSet, GenericViewSet):
@@ -29,6 +30,9 @@ class TicketAPISet(PermissionsMixin, ViewSet, GenericViewSet):
         return [permission() for permission in permission_classes]
 
     def list(self, request):
+        # This task blocks I/O
+        hello_task.delay()
+        # =======================
         queryset = self._get_tickets()
         serializer = TicketLightSerializer(queryset, many=True)
         response = ResponseMultiSerializer({"results": serializer.data})

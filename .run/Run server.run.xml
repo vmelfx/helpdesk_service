@@ -4,6 +4,7 @@
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
+      <env name="CSRF_TRUSTED_ORIGINS" value="http://localhost:1300" />
       <env name="DB_ENGINE" value="django.db.backends.postgresql" />
       <env name="DB_HOST" value="localhost" />
       <env name="DB_NAME" value="support" />
@@ -14,8 +15,9 @@
       <env name="DJANGO_DEBUG" value="True" />
       <env name="DJANGO_SECRET_KEY" value=" ^6-fb*!@o_5_z$ntlm)u$^(30hrck*5h25+p=o#v7jhl5bxhdc" />
       <env name="PYTHONUNBUFFERED" value="1" />
+      <env name="REDIS_URL" value="redis://localhost:6379/0" />
     </envs>
-    <option name="SDK_HOME" value="C:\Users\vladi\.virtualenvs\helpdesk_service-pgBhFbBo\Scripts\python.exe" />
+    <option name="SDK_HOME" value="$USER_HOME$/.local/share/virtualenvs/helpdesk_service-yAlZffy9/bin/python" />
     <option name="SDK_NAME" value="Pipenv (helpdesk_service)" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <option name="IS_MODULE_SDK" value="false" />
